@@ -143,7 +143,8 @@ var checkMe = ['ADMINISTRATOR','CREATE_INSTANT_INVITE','KICK_MEMBERS','BAN_MEMBE
     if (STATUS !== undefined)
     {
       embed.addField('📬 Server Status:',`\`\`\`${STATUS}\`\`\`\n\u200b\n`);
-      embed.setColor('#0x00b3ff')
+      embed.setColor('#0xff0000')
+        
     }
     return embed;
   };
@@ -154,7 +155,7 @@ var checkMe = ['ADMINISTRATOR','CREATE_INSTANT_INVITE','KICK_MEMBERS','BAN_MEMBE
     let embed = UpdateEmbed()
     .setColor(0x00b3ff)
     .setThumbnail(SERVER_LOGO)
-    .setFooter(TICK_N % 2 === 0 ? '🔵 Zevenbergen Roleplay' : '⚪ Zevenbergen Roleplay','https://images-ext-2.discordapp.net/external/730djecKVzEktL12z7Htizl1038DsXdOISNKhGCsrtQ/https/cdn.discordapp.com/icons/892700455061319681/0438089c2b2bf833d54cb40c8bfdcb90.webp')
+    .setFooter(TICK_N % 2 === 0 ? '🔴 Limburg Roleplay' : '⚪ Limburg Roleplay','https://media.discordapp.net/attachments/899419105201913967/927166843393806447/logoLRM.png')
     .addFields(
       { name: "📊Server Status:",          value: "```❌ Offline```",    inline: true },
       { name: "📝Wachtrij:",                value: "```--```",            inline: true },
@@ -172,8 +173,12 @@ var checkMe = ['ADMINISTRATOR','CREATE_INSTANT_INVITE','KICK_MEMBERS','BAN_MEMBE
         if (players.length !== LAST_COUNT) log(LOG_LEVELS.INFO,`${players.length} players`);
         let queue = vars['Queue'];
         let embed = UpdateEmbed()
-        .addField('\n\u200b\n**Hoe Kan Je De Server Joinen?**','Via De Serverlist Of Doe f8 in fivem ``connect 141.95.83.7`` En Druk op Enter. Bij Deze Server Status Kan Je Zien Hoeveel Mensen In De Stad Zijn Of In De Wachtrij Staan.\n\u200b\n',false)
+        .addField('\n\u200b\n**Hoe Kan Je De Server Joinen?**','Via De Serverlist Of Doe f8 in fivem **``connect 51.195.31.155:30050``** En Druk op Enter. Bij Deze Server Status Kan Je Zien Hoeveel Mensen In De Stad Zijn Of In De Wachtrij Staan.\n\u200b\n',false)
+                .setFooter(TICK_N % 2 === 0 ? '🔴 Limburg Roleplay' : '⚪ Limburg Roleplay','https://media.discordapp.net/attachments/899419105201913967/927166843393806447/logoLRM.png')
+                
         .addFields(
+            
+            
                     { name: "📫 Server restart tijden:",    value: `\`\`\`${RESTART_TIMES}\`\`\``,                                                                        },
           { name: "📊Server Status",            value: "```✅ Online```",                                                                                    inline: true },
           { name: "📝Wachtrij:",                  value: `\`\`\`${queue === 'Enabled' || queue === undefined ? '0' : queue.split(':')[1].trim()}\`\`\``,        inline: true },
@@ -181,24 +186,24 @@ var checkMe = ['ADMINISTRATOR','CREATE_INSTANT_INVITE','KICK_MEMBERS','BAN_MEMBE
 
           )
         .setThumbnail(SERVER_LOGO)
+       
 
-
-        .setFooter(TICK_N % 2 === 0 ? '🔵 Zevenbergen Roleplay' : '⚪ Zevenbergen Roleplay','https://images-ext-2.discordapp.net/external/730djecKVzEktL12z7Htizl1038DsXdOISNKhGCsrtQ/https/cdn.discordapp.com/icons/892700455061319681/0438089c2b2bf833d54cb40c8bfdcb90.webp')
-        if (players.length > 1) {
+    if (players.length > 0) {
           
           const fieldCount = 3;
           const fields = new Array(fieldCount);
           fields.fill('');
+         
           fields[0] = `**Inwoners:**\n`;
-          for (var i=0; i < players.length; i++) {
-            fields[(i+1)%fieldCount] += `${players[i].name.substr(0,12)}`; // first 12 characters of players name
+          for (var i=0;i<players.length;i++) {
+            fields[(i+1)%fieldCount] += `${players[i].name.substr(0,12)}\n`; // first 12 characters of players name
           }
-          for (var i=0; i < fields.length; i++) {
+          for (var i=0;i<fields.length;i++) {
             let field = fields[i];
-            if (field.length > 0) embed.addField('\u200b', field);
+            if (field.length > 0) embed.addField('\u200b',field,true);
           }
 
-        }
+    }
         sendOrUpdate(embed);
         LAST_COUNT = players.length;
       }).catch(offline);
@@ -215,21 +220,37 @@ var checkMe = ['ADMINISTRATOR','CREATE_INSTANT_INVITE','KICK_MEMBERS','BAN_MEMBE
 
   bot.on('ready',() => {
     log(LOG_LEVELS.INFO,`
-   /////////////////////////////////////////////////////
-   /// ███╗░░██╗░█████╗░████████╗██╗░█████╗░███████╗ ///
-   /// ████╗░██║██╔══██╗╚══██╔══╝██║██╔══██╗██╔════╝ ///
-   /// ██╔██╗██║██║░░██║░░░██║░░░██║██║░░╚═╝█████╗░░ ///
-   /// ██║╚████║██║░░██║░░░██║░░░██║██║░░██╗██╔══╝░░ ///
-   /// ██║░╚███║╚█████╔╝░░░██║░░░██║╚█████╔╝███████╗ ///
-   /// ╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░╚═╝░╚════╝░╚══════╝ ///
-   /////////////////////////////////////////////////////
-   ///                                               ///
-   ///                                               ///
-   ///                                               ///
-   ///   JE MOEDER IS GENEUKT DOOR 3 NEGERS          ///
-   ///           Gr SnuifDuifje#9089                 ///
-   ///                                               ///
-   /////////////////////////////////////////////////////
+ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄
+ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏
+⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⠿⠋
+⠀⠀⠀⠀⣉⠉⠉⠉
+⠀⢀⣴⣿⣿⣿⣿⣷⣦
+⠀⣾⣿⠏⣥⣤⣍⢻⣿⣷
+⢰⣿⣿⡈⣿⣿⣿⡄⢿⣿⡇
+⣸⣿⣿⣷⡘⣿⣿⣿⣌⢻⠇
+⣿⣿⣿⣿⣷⡘⣿⣿⣿⣦⡀
+⣿⣿⣿⣿⣿⣷⣌⢻⣿⣿⣷⣄⠀⠀⢀⣤⣶⣿⣿⣿⣷⣦⣄
+⣿⣿⣿⣿⣿⣿⣿⣦⡙⢿⣿⣿⣿⣦⣙⠻⠿⣿⣿⣿⣿⣿⣿⣦
+⢹⣿⣿⣿⣿⣿⣿⣿⣿⣦⡙⠻⣿⣿⣿⣿⣶⣦⣬⣭⣉⡙⢿⣿
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⢉⡛⠿⢿⣿⣿⣿⣿⣿⠀⡿
+⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿::::⠻⣷⣶⣤⣬⣭⣍⣥⠞⠁
+⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠉⠛⠛⠛⠋⣡⣴⣶⣦⣄⡀
+⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⢰⡿⢋⣥⣤⡍⢻⣆
+⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⢛⣥⣿⣿⣿⠟⣸⣿⣆
+⠀⠀⠀⠀⠀⠈⣿⣿⡿⠿⠿⠿⣿⠀⠀⠀⠀⣀⣠⣶⣿⣿⣿⡿⢋⣼⣿⣿⣿⣦
+⠀⠀⠀⠀⠀⠀⢸⠃⣶⣿⣷⣶⣶⣶⣶⣾⣿⣿⣿⣿⡿⠟⣡⣶⣿⣿⣿⣿⣿⣿⣷⣄⡀
+⠀⠀⠀⠀⠀⠀⢸⣧⡙⠻⠿⠿⠿⠿⠿⠿⠿⠛⠋⠁⠀⠈⠛⠻⠻⣿⣿⣿⣿⣿⣿⣿⣦⣄
+⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣷⣶⣶⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣷⡄
+⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿⡿
+⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⣿⣿⣿⣿⣿⣿⣿⠃
+⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡿⠛⠁
+⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡿⠁
+⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣃⣀⣀⣀⣀⣀⣀⡀
+⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆
+⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿
+⠀⠀⠀⠀⠙⠿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠋
    ➼ Bot has been started and will attempt to connect to the server...
     `)
     bot.user.setPresence({

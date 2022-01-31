@@ -22,6 +22,13 @@ Set environment variables as described below:
   BUG_LOG_CHANNEL - channel to log bug reports
   LOG_CHANNEL - channel to log status changes
 */
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 const setup = require('./setup.js');
 const { start } = require('./bot.js');
